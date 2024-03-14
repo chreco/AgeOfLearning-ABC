@@ -6,7 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from page_objects.base_page import BasePage
 
 """
-    Shadow DOM code here
+    Shadow DOM method
 """
 
 

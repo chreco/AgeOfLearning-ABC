@@ -1,8 +1,8 @@
 from selenium.common import NoSuchElementException
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
-from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
+from selenium.webdriver.support.wait import WebDriverWait
 
 
 class BasePage:
@@ -44,3 +44,27 @@ class BasePage:
     def _get_text(self, locator: tuple, time: int = 10) -> str:
         self._wait_until_element_is_visible(locator, time)
         return self._find(locator).text
+
+    def _get_shadow_dom(self):
+        # getShadowRoot() method
+        """
+        or something like this:
+            shadow_host1 = driver.find_element(By.CSS_SELECTOR, "")
+            shadow_root1 = driver.execute_script('return arguments[0].shadowRoot', shadow_host1)
+
+            shadow_host2 = shadow_root1.find_element(By.CSS_SELECTOR, "")
+            shadow_root2 = driver.execute_script('return arguments[0].shadowRoot', shadow_host2)
+
+            shadow_host3 = shadow_root1.find_element(By.CSS_SELECTOR, "")
+            shadow_root3 = driver.execute_script('return arguments[0].shadowRoot', shadow_host3)
+
+            shadow_host4 = shadow_root1.find_element(By.CSS_SELECTOR, "")
+            shadow_root4 = driver.execute_script('return arguments[0].shadowRoot', shadow_host4)
+
+            shadow_host5 = shadow_root1.find_element(By.CSS_SELECTOR, '')
+            shadow_root5 = driver.execute_script('return arguments[0].shadowRoot', shadow_host5)
+
+            shadow_content = shadow_host5.find_element(By.CSS_SELECTOR, "")
+            shadow_content.send_keys("Twilight")
+        :return:
+        """
